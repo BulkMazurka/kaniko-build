@@ -19,5 +19,6 @@ spec:
             git clone https://github.com/BulkMazurka/kaniko-build.git /workspace/repo &&
             cd repo &&
             pip install -r requirements.txt &&
+            pip install pytest &&  
             pytest -q
 
