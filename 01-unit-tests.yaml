@@ -1,27 +1,27 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: unit-test
+  name: run-tests
   namespace: test-build
 spec:
+  backoffLimit: 0          # do not retry on failure (fail fast)
   template:
     spec:
-      containers:
-      - name: unit-test
-        image: python:3.9
-        command: ["bash", "-c"]
-        args:
-          - |
-            pip install -r requirements.txt &&
-            pytest
-        volumeMounts:
-          - name: source-code
-            mountPath: /app
-        workingDir: /app
       restartPolicy: Never
+      containers:
+      - name: pytest
+        image: python:3.9-slim
+        workingDir: /workspace                    # working directory for running commands
+        command: ["/bin/sh", "-c"]                # run a shell to execute multiple steps
+        args:
+          - apt-get update && apt-get install -y git && \   # install Git
+            git clone https://github.com/BulkMazurka/kaniko-build.git /workspace && \ 
+            cd /workspace/build && \                        # go into the build/ folder
+            pip install -r requirements.txt && \            # install app dependencies
+            pytest -q                                        # run tests quietly (pytest)
       volumes:
-        - name: source-code
-          configMap:
-            name: source-code
-  backoffLimit: 1
-
+      - name: workspace
+        emptyDir: {}                         
+      volumeMounts:
+      - name: workspace
+        mountPath: /workspace
