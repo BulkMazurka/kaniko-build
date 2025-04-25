@@ -13,11 +13,11 @@ spec:
         image: python:3.9-slim
         workingDir: /workspace   
         - args:
-           - apt-get update && apt-get install -y git && \   # install Git
-           - git clone https://github.com/BulkMazurka/kaniko-build.git /workspace && \ 
-           - cd /workspace/build && \                        # go into the build/ folder
-           - pip install -r requirements.txt && \            # install app dependencies
-           - pytest -q                                        # run tests quietly (pytest)
+           - apt-get update && apt-get install -y git && \  
+           - git clone https://github.com/BulkMazurka/kaniko-build.git /workspace \ 
+           - cd /workspace/build && \                        
+           - pip install -r requirements.txt && \           
+           - pytest -q                                     
       volumes:
       - name: workspace
         emptyDir: {}                         
