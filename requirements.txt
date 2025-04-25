@@ -2,3 +2,4 @@ Flask==2.1.1
 requests==2.27.1
 Werkzeug==2.1.2
 pytest==8.3.5
+prometheus-flask-exporter==0.22.4
