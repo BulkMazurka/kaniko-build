@@ -11,7 +11,7 @@ spec:
         image: gcr.io/kaniko-project/executor:latest
         args:
           - "--context=git://github.com/BulkMazurka/kaniko-build.git"
-          - "--dockerfile=build/Dockerfile"
+          - "--dockerfile=Dockerfile"
           - "--destination=docker.io/opensourcerero/kaniko-app:latest"
         volumeMounts:
           - name: docker-config
