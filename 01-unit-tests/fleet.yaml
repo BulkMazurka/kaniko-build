@@ -1,0 +1,6 @@
+defaultNamespace: test-build
+helm:
+  waitForJobs: true
+  atomic: true
+labels:
+  stage: unit-tests
