@@ -1,4 +1,2 @@
 namespace: test-build
 waitForJobs: true
-paths:
-  - manifests
