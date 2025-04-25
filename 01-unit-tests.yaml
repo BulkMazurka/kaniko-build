@@ -12,10 +12,7 @@ spec:
       - name: pytest
         image: python:3.9-slim
         workingDir: /workspace   
-        command: 
-        - "/bin/sh"
-        - "-c"
-        args:
+        - args:
            - apt-get update && apt-get install -y git && \   # install Git
            - git clone https://github.com/BulkMazurka/kaniko-build.git /workspace && \ 
            - cd /workspace/build && \                        # go into the build/ folder
