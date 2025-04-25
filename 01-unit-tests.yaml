@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: unit-test
+  namespace: test-build
+spec:
+  template:
+    spec:
+      containers:
+      - name: unit-test
+        image: python:3.9
+        command: ["bash", "-c"]
+        args:
+          - |
+            pip install -r requirements.txt &&
+            pytest
+        volumeMounts:
+          - name: source-code
+            mountPath: /app
+        workingDir: /app
+      restartPolicy: Never
+      volumes:
+        - name: source-code
+          configMap:
+            name: source-code
+  backoffLimit: 1
+
