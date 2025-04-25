@@ -1,2 +1,4 @@
 namespace: test-gitops
 waitForJobs: true
+paths:
+  - manifests
