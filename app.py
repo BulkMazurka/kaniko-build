@@ -3,8 +3,10 @@ import requests
 import datetime
 import socket
 import os
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 @app.route('/')
 def home():
