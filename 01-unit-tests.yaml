@@ -11,9 +11,11 @@ spec:
       containers:
       - name: pytest
         image: python:3.9-slim
-        workingDir: /workspace                    # working directory for running commands
-        command: ["/bin/sh", "-c"]                # run a shell to execute multiple steps
-        - args:
+        workingDir: /workspace   
+        command: 
+        - "/bin/sh"
+        - "-c"
+        args:
            - apt-get update && apt-get install -y git && \   # install Git
            - git clone https://github.com/BulkMazurka/kaniko-build.git /workspace && \ 
            - cd /workspace/build && \                        # go into the build/ folder
