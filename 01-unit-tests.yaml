@@ -16,7 +16,7 @@ spec:
         args:
           - |
             apt-get update && apt-get install -y git &&
-            git clone https://github.com/BulkMazurka/kaniko-build.git /workspace &&
+            git clone https://github.com/BulkMazurka/kaniko-build.git /workspace/repo &&
             cd /workspace/repo/build &&
             pip install -r requirements.txt &&
             pytest -q
