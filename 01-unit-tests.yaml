@@ -4,22 +4,20 @@ metadata:
   name: run-tests
   namespace: test-build
 spec:
-  backoffLimit: 0          # do not retry on failure (fail fast)
+  backoffLimit: 0
   template:
     spec:
       restartPolicy: Never
       containers:
       - name: pytest
         image: python:3.9-slim
-        - args:
-           - apt-get update && apt-get install -y git && \  
-           - git clone https://github.com/BulkMazurka/kaniko-build.git /workspace \ 
-           - cd /workspace/build && \                        
-           - pip install -r requirements.txt && \           
-           - pytest -q                                     
-      volumes:
-      - name: workspace
-        emptyDir: {}                         
-      volumeMounts:
-      - name: workspace
-        mountPath: /workspace
+        workingDir: /workspace
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            apt-get update && apt-get install -y git &&
+            git clone https://github.com/BulkMazurka/kaniko-build.git /workspace &&
+            cd /workspace/build &&
+            pip install -r requirements.txt &&
+            pytest -q
+
