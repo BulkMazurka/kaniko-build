@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kaniko-app-monitor
+  namespace: test-build
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: kaniko-app
+  namespaceSelector:
+    matchNames:
+      - test-build
+  endpoints:
+    - port: metrics
+      path: /metrics
+      interval: 15s
+
