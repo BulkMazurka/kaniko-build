@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: kaniko-build
+  namespace: test-build
 spec:
   template:
     spec:
