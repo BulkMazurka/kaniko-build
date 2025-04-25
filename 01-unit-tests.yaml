@@ -18,8 +18,6 @@ spec:
             apt-get update && apt-get install -y git &&
             git clone https://github.com/BulkMazurka/kaniko-build.git /workspace/repo &&
             cd repo &&
-            ls -lrt &&
-            cd repo/build &&
             pip install -r requirements.txt &&
             pytest -q
 
