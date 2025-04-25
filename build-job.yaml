@@ -10,7 +10,8 @@ spec:
       - name: kaniko
         image: gcr.io/kaniko-project/executor:latest
         args:
-          - "--context=git://github.com/BulkMazurka/kaniko-build.git/build"
+          - "--context=git://github.com/BulkMazurka/kaniko-build.git"
+          - "--context=dir://build"
           - "--dockerfile=Dockerfile"
           - "--destination=docker.io/opensourcerero/kaniko-app:latest"
         volumeMounts:
