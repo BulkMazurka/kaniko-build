@@ -13,6 +13,7 @@ spec:
           - "--context=git://github.com/BulkMazurka/kaniko-build.git"
           - "--dockerfile=Dockerfile"
           - "--destination=docker.io/opensourcerero/pythonbuild:v1"
+          - "--verbosity=debug"
         volumeMounts:
           - name: docker-config
             mountPath: /kaniko/.docker
