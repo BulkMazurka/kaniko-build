@@ -25,4 +25,4 @@ spec:
             items:
               - key: .dockerconfigjson
                 path: config.json
-  backoffLimit: 1
+  backoffLimit: 0
