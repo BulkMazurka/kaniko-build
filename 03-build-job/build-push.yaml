@@ -12,7 +12,7 @@ spec:
         args:
           - "--context=git://github.com/BulkMazurka/kaniko-build.git"
           - "--dockerfile=Dockerfile"
-          - "--destination=docker.io/opensourcerero/kaniko-app:v1"
+          - "--destination=docker.io/opensourcerero/pythonbuild:v1"
         volumeMounts:
           - name: docker-config
             mountPath: /kaniko/.docker
